@@ -11,84 +11,87 @@
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-//needs editing
-static int	get_chunk_midpoint(t_stack *stack, int size)
+
+static int	get_chunk_max(t_stack *stack, int size)
 {
 	int		i;
-	int		midpoint;
-	int		higher_count;
+	int		max;
 	t_stack	*current_node;
 
 	if (!stack)
 		return (0);
-	higher_count = 0;
-	current_node = stack;
-	while (higher_count != size / 2)
+	i = 1;
+	max = stack->number;
+	current_node = stack->next;
+	while (i < size)
 	{
-		i = 1;
-		higher_count = 0;
-		midpoint = stack->number;
-		stack = stack->next;
-		while (i < size)
-		{
-			if (stack->number > midpoint)
-				higher_count++;
-			stack = stack->next;
-			i++;
-		}
-		stack = stack->next;
+		if (current_node->number > max)
+			max = current_node->number;
+		current_node = current_node->next;
+		i++;
 	}
-	return (midpoint);
+	return (max);
 }
-//needs editing
-static int	push_above_midpoint(t_stack **stack_a, t_stack **stack_b, int size)
-{
-	int	midpoint;
-	int	pushed_count;
-	int	node_count;
 
-	if (!stack_a || !(*stack_a))
-		return (0);
-	midpoint = get_chunk_midpoint(*stack_b, size);
-	pushed_count = 0;
-	node_count = stack_length(*stack_a);
-	while (pushed_count != node_count / 2)
-	{
-		if ((*stack_a)->number < midpoint)
-		{
-			exec_push(stack_a, stack_b, 'b');
-			pushed_count++;
-		}
-		else if ((*stack_a)->prev->number < midpoint)
-			exec_rev_rotate(stack_a, 'a');
-		else
-			exec_rotate(stack_a, 'a');
-	}
-	return (pushed_count);
-}
-//needs editing
-void	sort_chunk_b(t_stack **stack_a, t_stack **stack_b, int size)
+static void	push_max(t_stack **stack_a, t_stack **stack_b, int size)
 {
-	int	pushed_count;	
+	int	max;
+	int	rotations;
 
 	if (!stack_b || !(*stack_b))
 		return ;
-	if (size > 2)
+	max = get_chunk_max(*stack_b, size);
+	rotations = 0;
+	while ((*stack_b)->number != max)
 	{
-		// do pushes above midpoint
-		pushed_count = push_above_midpoint(stack_a, stack_b, size);
-		ft_putnbr(pushed_count);
-		ft_putchar('\n');
+		exec_rotate(stack_b, 'b');
+		rotations++;
+	}
+	exec_push(stack_b, stack_a, 'a');
+	while (rotations > 0)
+	{
+		exec_rev_rotate(stack_b, 'b');
+		rotations--;
+	}
+	return ;
+}
+
+static void	push_size(t_stack **stack_a, t_stack **stack_b, int size)
+{
+	int i;
+
+	i = 0;
+	while (i < size)
+	{
+		exec_push(stack_b, stack_a, 'a');
+		i++;
+	}
+	return ;
+}
+
+void	sort_chunk_b(t_stack **stack_a, t_stack **stack_b, int size)
+{
+	if (!stack_b || !(*stack_b))
+		return ;
+	if (check_sort_desc(*stack_b, size))
+	{
+		push_size(stack_a, stack_b, size);
+	}
+	else if (size > 2)
+	{
+		// push the max value
+		push_max(stack_a, stack_b, size);
 		//repeat recursively with smaller chunk
-		sort_chunk_b(stack_a, stack_b, size - pushed_count);
+		sort_chunk_b(stack_a, stack_b, size - 1);
 	}
 	else if (size == 2)
 	{
 		// check if sorted, otherwise, do swap. Push both
-		if (!check_sort_desc(*stack_a))
+		if (!check_sort_desc(*stack_b, size))
 			exec_swap(stack_b, 'b');
-		exec_push(stack_b, stack_a, 'a');
-		exec_push(stack_b, stack_a, 'a');
+		push_size(stack_a, stack_b, size);
+		//exec_push(stack_b, stack_a, 'a');
+		//exec_push(stack_b, stack_a, 'a');
 	}
 	else
 		exec_push(stack_b, stack_a, 'a');

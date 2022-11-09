@@ -71,14 +71,21 @@ void	sort_stack_a(t_stack **stack_a, t_stack **stack_b)
 {
 	int	pushed_count;
 
-	if (!stack_a || !(*stack_a))
+	if (!stack_a || !(*stack_a) || check_sort(*stack_a))
 		return ;
 	if (stack_length(*stack_a) > 2)
 	{
 		// do pushes below midpoint
 		pushed_count = push_below_midpoint(stack_a, stack_b);
+		/*
+		ft_putstr("Pushed: ");
 		ft_putnbr(pushed_count);
 		ft_putchar('\n');
+		print_stack(*stack_a);
+		ft_putchar('\n');
+		print_stack(*stack_b);
+		ft_putchar('\n');
+		*/
 		sort_stack_a(stack_a, stack_b);
 		// get from B chunk with pushed_count size
 		sort_chunk_b(stack_a, stack_b, pushed_count);

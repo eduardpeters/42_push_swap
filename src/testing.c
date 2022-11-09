@@ -13,7 +13,7 @@
 #include "../include/push_swap.h"
 #include <stdio.h> //remove!!
 
-static void	print_stack(t_stack *stack)
+void	print_stack(t_stack *stack)
 {
 	t_stack	*i;
 
@@ -35,14 +35,18 @@ void	run_tests(t_stack **stack_a)
 	t_stack	*stack_b;
 
 	stack_b = NULL;
+	/*
 	print_stack(*stack_a);
 	ft_putchar('\n');
 	print_stack(stack_b);
 	ft_putchar('\n');
+	*/
 	sort_stack_a(stack_a, &stack_b);
+	/*
 	print_stack(*stack_a);
 	ft_putchar('\n');
 	print_stack(stack_b);
 	ft_putchar('\n');
+	*/
 	return ;
 }

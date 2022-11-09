@@ -28,7 +28,7 @@ typedef struct s_stack
 /* push_swap.c */
 int		main(int argc, char **argv);
 int		check_sort(t_stack *stack);
-int		check_sort_desc(t_stack *stack);
+int		check_sort_desc(t_stack *stack, int size);
 
 /* split_arguments.c */
 char	**split_arguments(int argc, char **argv);
@@ -60,6 +60,7 @@ void	exec_swap(t_stack **stack, char c);
 void	exec_push(t_stack **stack_from, t_stack **stack_to, char c);
 
 /* testing.c */
+void	print_stack(t_stack *stack);
 void	run_tests(t_stack **stack_a);
 
 #endif

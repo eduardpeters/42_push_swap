@@ -21,13 +21,18 @@ static int	swap_stack(t_stack **stack)
 		return (0);
 	first = *stack;
 	second = (*stack)->next;
-	first->prev->next = second;
-	second->next->prev = first;
-	second->prev = first->prev;
-	first->prev = second;
-	first->next = second->next;
-	second->next = first;
-	*stack = second;
+	if (second->next == first)
+		*stack = (*stack)->next;
+	else
+	{
+		first->prev->next = second;
+		second->next->prev = first;
+		second->prev = first->prev;
+		first->prev = second;
+		first->next = second->next;
+		second->next = first;
+		*stack = second;
+	}
 	return (1);
 }
 

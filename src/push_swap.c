@@ -27,16 +27,17 @@ int	check_sort(t_stack *stack)
 	return (1);
 }
 
-int	check_sort_desc(t_stack *stack)
+int	check_sort_desc(t_stack *stack, int size)
 {
-	t_stack	*i;
+	int i;
 
-	i = stack;
-	while (i->next != stack)
+	i = 0;
+	while (i < size - 1)
 	{
-		if (i->number < i->next->number)
+		if (stack->number < stack->next->number)
 			return (0);
-		i = i->next;
+		stack = stack->next;
+		i++;
 	}
 	return (1);
 }
@@ -63,13 +64,10 @@ int	main(int argc, char **argv)
 		getchar();
 		return (1);
 	}
-	if (!check_sort(stack_a))
-	{
-		ft_putnbr(stack_length(stack_a));
-		ft_putchar('\n');
-		run_tests(&stack_a);
-	}
+	//ft_putnbr(stack_length(stack_a));
+	//ft_putchar('\n');
+	run_tests(&stack_a);
 	free_stack(&stack_a);
-	getchar();
+	//getchar();
 	return (0);
 }
