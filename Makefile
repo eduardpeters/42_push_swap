@@ -6,7 +6,7 @@
 #    By: epeters- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/09 17:56:05 by epeters-          #+#    #+#              #
-#    Updated: 2022/11/08 12:37:27 by epeters-         ###   ########.fr        #
+#    Updated: 2022/11/13 12:18:25 by epeters-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ DIR_LIBFT	= libft
 
 SRCS =	push_swap.c parse_arguments.c split_arguments.c manage_stack.c \
 		stack_rotations.c stack_swaps.c stack_pushes.c testing.c \
-		sorting_a.c sorting_b.c
+		sorting_a.c sorting_b.c sort_chunk_a.c
 
 OBJS = $(addprefix $(DIR_SRCS)/,$(SRCS:.c=.o))
 

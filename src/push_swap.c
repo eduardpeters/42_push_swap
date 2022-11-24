@@ -6,7 +6,7 @@
 /*   By: epeters- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 16:43:39 by epeters-          #+#    #+#             */
-/*   Updated: 2022/11/08 11:48:44 by epeters-         ###   ########.fr       */
+/*   Updated: 2022/11/24 13:42:55 by epeters-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,24 @@ int	check_sort(t_stack *stack)
 	return (1);
 }
 
+int	check_sort_asc(t_stack *stack, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		if (stack->number > stack->next->number)
+			return (0);
+		stack = stack->next;
+		i++;
+	}
+	return (1);
+}
+
 int	check_sort_desc(t_stack *stack, int size)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < size - 1)
@@ -53,7 +68,7 @@ int	main(int argc, char **argv)
 	if (!new_args)
 	{
 		write(2, "Error\n", 6);
-		getchar();
+		getchar(); //remove!!
 		return (1);
 	}
 	stack_a = parse_arguments(new_args);
@@ -61,13 +76,11 @@ int	main(int argc, char **argv)
 	if (!stack_a)
 	{
 		write(2, "Error\n", 6);
-		getchar();
+		getchar(); //remove!!
 		return (1);
 	}
-	//ft_putnbr(stack_length(stack_a));
-	//ft_putchar('\n');
 	run_tests(&stack_a);
 	free_stack(&stack_a);
-	//getchar();
+	getchar(); //remove!!
 	return (0);
 }

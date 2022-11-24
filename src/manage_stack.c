@@ -6,7 +6,7 @@
 /*   By: epeters- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 17:07:29 by epeters-          #+#    #+#             */
-/*   Updated: 2022/10/31 10:42:06 by epeters-         ###   ########.fr       */
+/*   Updated: 2022/11/13 11:28:11 by epeters-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,23 @@ int	stack_length(t_stack *stack)
 		length++;
 	}
 	return (length);
+}
+
+void	print_stack(t_stack *stack)
+{
+	t_stack	*i;
+
+	if (!stack)
+		return ;
+	i = stack;
+	while (i->next != stack)
+	{
+		ft_putnbr(i->number);
+		i = i->next;
+		ft_putchar(' ');
+	}
+	ft_putnbr(i->number);
+	return ;
 }
 
 void	free_stack(t_stack **stack)

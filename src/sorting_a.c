@@ -6,7 +6,7 @@
 /*   By: epeters- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 12:39:01 by epeters-          #+#    #+#             */
-/*   Updated: 2022/11/08 13:04:31 by epeters-         ###   ########.fr       */
+/*   Updated: 2022/11/13 10:25:56 by epeters-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,26 +75,12 @@ void	sort_stack_a(t_stack **stack_a, t_stack **stack_b)
 		return ;
 	if (stack_length(*stack_a) > 2)
 	{
-		// do pushes below midpoint
 		pushed_count = push_below_midpoint(stack_a, stack_b);
-		/*
-		ft_putstr("Pushed: ");
-		ft_putnbr(pushed_count);
-		ft_putchar('\n');
-		print_stack(*stack_a);
-		ft_putchar('\n');
-		print_stack(*stack_b);
-		ft_putchar('\n');
-		*/
 		sort_stack_a(stack_a, stack_b);
-		// get from B chunk with pushed_count size
 		sort_chunk_b(stack_a, stack_b, pushed_count);
 	}
 	else
-	{
-		// check if sorted, otherwise, do swap
 		if (!check_sort(*stack_a))
 			exec_swap(stack_a, 'a');
-	}
 	return ;
 }
