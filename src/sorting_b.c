@@ -6,7 +6,7 @@
 /*   By: epeters- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 12:38:43 by epeters-          #+#    #+#             */
-/*   Updated: 2022/11/24 15:07:56 by epeters-         ###   ########.fr       */
+/*   Updated: 2022/11/24 16:02:02 by epeters-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 static int	get_midpoint_b(t_stack *stack, int size)
 {
-	int		i;
 	int		midpoint;
 	int		higher_count;
 	t_stack	*midpoint_node;
-	t_stack	*current_node;
 
 	if (!stack)
 		return (0);
@@ -26,17 +24,8 @@ static int	get_midpoint_b(t_stack *stack, int size)
 	midpoint_node = stack;
 	while (higher_count != size / 2)
 	{
-		i = 0;
-		higher_count = 0;
 		midpoint = midpoint_node->number;
-		current_node = stack;
-		while (i < size)
-		{
-			if (current_node->number > midpoint)
-				higher_count++;
-			current_node = current_node->next;
-			i++;
-		}
+		higher_count = count_nodes(stack, size, midpoint, 'b');
 		midpoint_node = midpoint_node->next;
 	}
 	return (midpoint);
@@ -66,11 +55,7 @@ static int	push_above_mid_chunk(t_stack **stack_a, t_stack **stack_b, int size)
 			rotations++;
 		}
 	}
-	while (rotations > 0)
-	{
-		exec_rev_rotate(stack_b, 'b');
-		rotations--;
-	}
+	rev_rotate_chunk(stack_b, rotations, 'b');
 	return (pushed_count);
 }
 

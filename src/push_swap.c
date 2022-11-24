@@ -6,7 +6,7 @@
 /*   By: epeters- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 16:43:39 by epeters-          #+#    #+#             */
-/*   Updated: 2022/11/24 13:42:55 by epeters-         ###   ########.fr       */
+/*   Updated: 2022/11/24 16:50:27 by epeters-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	main(int argc, char **argv)
 		getchar(); //remove!!
 		return (1);
 	}
-	run_tests(&stack_a);
+	route_sort(&stack_a);
 	free_stack(&stack_a);
 	getchar(); //remove!!
 	return (0);

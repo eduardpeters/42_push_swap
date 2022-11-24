@@ -6,7 +6,7 @@
 /*   By: epeters- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 16:40:09 by epeters-          #+#    #+#             */
-/*   Updated: 2022/11/13 12:18:10 by epeters-         ###   ########.fr       */
+/*   Updated: 2022/11/24 17:21:08 by epeters-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@ void	sort_chunk_b(t_stack **stack_a, t_stack **stack_b, int size);
 /* sort_chunk_a.c */
 void	sort_chunk_a(t_stack **stack_a, t_stack **stack_b, int size);
 
+/* chunk_helpers.c */
+int		count_nodes(t_stack *stack, int size, int midpoint, char chunk);
+void	rev_rotate_chunk(t_stack **stack, int rotations, char chunk);
+
 /* stack_rotations.c */
 void	exec_rotate(t_stack **stack, char c);
 void	exec_rev_rotate(t_stack **stack, char c);
@@ -64,7 +68,10 @@ void	exec_swap(t_stack **stack, char c);
 /* stack_pushes.c */
 void	exec_push(t_stack **stack_from, t_stack **stack_to, char c);
 
-/* testing.c */
-void	run_tests(t_stack **stack_a);
+/* route_sort.c */
+void	route_sort(t_stack **stack_a);
+
+/* sort_three.c */
+void	sort_three(t_stack **stack_a);
 
 #endif
