@@ -6,11 +6,12 @@
 /*   By: epeters- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 16:43:39 by epeters-          #+#    #+#             */
-/*   Updated: 2022/11/27 19:36:15 by epeters-         ###   ########.fr       */
+/*   Updated: 2022/11/27 20:31:32 by epeters-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+#include <stdio.h>
 
 int	check_sort(t_stack *stack)
 {

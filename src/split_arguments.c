@@ -6,7 +6,7 @@
 /*   By: epeters- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 18:28:59 by epeters-          #+#    #+#             */
-/*   Updated: 2022/09/15 18:23:36 by epeters-         ###   ########.fr       */
+/*   Updated: 2022/11/27 20:30:14 by epeters-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	free_split_arguments(char **new_args)
 	current_arg = 0;
 	while (new_args[current_arg])
 		free(new_args[current_arg++]);
+	free(new_args);
+	return ;
 }
 
 char	**split_arguments(int argc, char **argv)
