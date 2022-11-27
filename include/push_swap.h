@@ -6,15 +6,12 @@
 /*   By: epeters- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 16:40:09 by epeters-          #+#    #+#             */
-/*   Updated: 2022/11/24 17:21:08 by epeters-         ###   ########.fr       */
+/*   Updated: 2022/11/27 19:00:07 by epeters-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
-//# include <stdlib.h>
-//# include <unistd.h>
 
 # include "libft.h"
 
@@ -56,6 +53,7 @@ void	sort_chunk_a(t_stack **stack_a, t_stack **stack_b, int size);
 /* chunk_helpers.c */
 int		count_nodes(t_stack *stack, int size, int midpoint, char chunk);
 void	rev_rotate_chunk(t_stack **stack, int rotations, char chunk);
+void	rotate_chunk(t_stack **stack, int rotations, char chunk);
 
 /* stack_rotations.c */
 void	exec_rotate(t_stack **stack, char c);
@@ -73,5 +71,8 @@ void	route_sort(t_stack **stack_a);
 
 /* sort_three.c */
 void	sort_three(t_stack **stack_a);
+
+/* sort_four.c */
+void	sort_up_to_four(t_stack **stack_a, t_stack **stack_b, int size);
 
 #endif

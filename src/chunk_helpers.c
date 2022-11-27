@@ -6,7 +6,7 @@
 /*   By: epeters- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 15:28:47 by epeters-          #+#    #+#             */
-/*   Updated: 2022/11/24 16:00:18 by epeters-         ###   ########.fr       */
+/*   Updated: 2022/11/27 17:18:17 by epeters-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,16 @@ void	rev_rotate_chunk(t_stack **stack, int rotations, char chunk)
 	while (rotations > 0)
 	{
 		exec_rev_rotate(stack, chunk);
+		rotations--;
+	}
+	return ;
+}
+
+void	rotate_chunk(t_stack **stack, int rotations, char chunk)
+{
+	while (rotations > 0)
+	{
+		exec_rotate(stack, chunk);
 		rotations--;
 	}
 	return ;

@@ -6,12 +6,11 @@
 /*   By: epeters- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 16:43:39 by epeters-          #+#    #+#             */
-/*   Updated: 2022/11/24 16:50:27 by epeters-         ###   ########.fr       */
+/*   Updated: 2022/11/27 19:36:15 by epeters-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include <stdio.h> //remove getchar before returns!!
 
 int	check_sort(t_stack *stack)
 {
@@ -68,7 +67,6 @@ int	main(int argc, char **argv)
 	if (!new_args)
 	{
 		write(2, "Error\n", 6);
-		getchar(); //remove!!
 		return (1);
 	}
 	stack_a = parse_arguments(new_args);
@@ -76,11 +74,9 @@ int	main(int argc, char **argv)
 	if (!stack_a)
 	{
 		write(2, "Error\n", 6);
-		getchar(); //remove!!
 		return (1);
 	}
 	route_sort(&stack_a);
 	free_stack(&stack_a);
-	getchar(); //remove!!
 	return (0);
 }

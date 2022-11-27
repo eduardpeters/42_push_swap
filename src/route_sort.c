@@ -6,7 +6,7 @@
 /*   By: epeters- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:49:52 by epeters-          #+#    #+#             */
-/*   Updated: 2022/11/24 17:47:55 by epeters-         ###   ########.fr       */
+/*   Updated: 2022/11/27 19:00:38 by epeters-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,11 @@ void	route_sort(t_stack **stack_a)
 		return ;
 	stack_b = NULL;
 	stack_size = stack_length(*stack_a);
-	print_stack(*stack_a);
-	ft_putchar('\n');
-	print_stack(stack_b);
-	ft_putchar('\n');
 	if (stack_size == 2)
 		exec_swap(stack_a, 'a');
-	else if (stack_size == 3)
-		sort_three(stack_a);
+	else if (stack_size < 5)
+		sort_up_to_four(stack_a, &stack_b, stack_size);
 	else
 		sort_stack_a(stack_a, &stack_b);
-	print_stack(*stack_a);
-	ft_putchar('\n');
-	print_stack(stack_b);
-	ft_putchar('\n');
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: epeters- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:59:28 by epeters-          #+#    #+#             */
-/*   Updated: 2022/11/24 17:58:41 by epeters-         ###   ########.fr       */
+/*   Updated: 2022/11/24 19:14:35 by epeters-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static void	decide_rotation(t_stack **stack_a)
 
 void	sort_three(t_stack **stack_a)
 {
+	if (check_sort(*stack_a))
+		return ;
 	if ((*stack_a)->number > (*stack_a)->next->number)
 	{
 		if ((*stack_a)->number < (*stack_a)->prev->number)

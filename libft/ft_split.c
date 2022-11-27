@@ -6,7 +6,7 @@
 /*   By: epeters- <epeters-@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 15:04:50 by epeters-          #+#    #+#             */
-/*   Updated: 2022/06/19 19:27:16 by epeters-         ###   ########.fr       */
+/*   Updated: 2022/11/27 17:48:11 by epeters-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,20 @@ static size_t	ft_wordcount(char const *s, char c)
 	return (count);
 }
 
+static char	**ft_free_split(char **tab)
+{
+	size_t	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+	return (NULL);
+}
+
 static char	**ft_wordsplit(char **tab, size_t count, char const *s, char c)
 {
 	size_t	len;
@@ -65,7 +79,7 @@ static char	**ft_wordsplit(char **tab, size_t count, char const *s, char c)
 		len = ft_wordlen(s, c);
 		tab[i] = (char *)(malloc(sizeof(**tab) * (len + 1)));
 		if (!tab[i])
-			return (NULL);
+			return (ft_free_split(tab));
 		ft_strlcpy(tab[i], s, len + 1);
 		s += len;
 		i++;
