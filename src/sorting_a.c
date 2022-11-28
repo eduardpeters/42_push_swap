@@ -73,14 +73,13 @@ void	sort_stack_a(t_stack **stack_a, t_stack **stack_b)
 
 	if (!stack_a || !(*stack_a) || check_sort(*stack_a))
 		return ;
-	if (stack_length(*stack_a) > 2)
+	if (stack_length(*stack_a) > 3)
 	{
 		pushed_count = push_below_midpoint(stack_a, stack_b);
 		sort_stack_a(stack_a, stack_b);
 		sort_chunk_b(stack_a, stack_b, pushed_count);
 	}
 	else
-		if (!check_sort(*stack_a))
-			exec_swap(stack_a, 'a');
+		sort_three(stack_a);
 	return ;
 }
