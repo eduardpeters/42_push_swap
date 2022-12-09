@@ -23,6 +23,30 @@ void	free_split_arguments(char **new_args)
 	return ;
 }
 
+static int	check_args_numbers(int argc, char **argv)
+{
+	int	i;
+	int	current_arg;
+	int	number_count;
+
+	current_arg = 0;
+	while (current_arg < argc)
+	{
+		i = 0;
+		number_count = 0;
+		while (argv[current_arg][i])
+		{
+			if (ft_isdigit(argv[current_arg][i]))
+				number_count++;
+			i++;
+		}
+		if (number_count == 0)
+			return (0);
+		current_arg++;
+	}
+	return (1);
+}
+
 char	**split_arguments(int argc, char **argv)
 {
 	int		current_arg;
@@ -30,6 +54,8 @@ char	**split_arguments(int argc, char **argv)
 	char	*joined_str;
 	char	*temp_str;
 
+	if (!check_args_numbers(argc, argv))
+		return (NULL);
 	joined_str = ft_strdup(argv[0]);
 	current_arg = 1;
 	while (current_arg < argc)

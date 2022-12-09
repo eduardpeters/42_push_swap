@@ -84,11 +84,6 @@ t_stack	*parse_arguments(char **args)
 
 	current_arg = 0;
 	arg_size = get_arg_size(args);
-	if (arg_size == 0)
-	{
-		free_split_arguments(args);
-		exit(0);
-	}
 	while (current_arg < arg_size)
 	{
 		if (!check_number(args[current_arg]))
