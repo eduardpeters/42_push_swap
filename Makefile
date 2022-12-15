@@ -6,7 +6,7 @@
 #    By: epeters- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/09 17:56:05 by epeters-          #+#    #+#              #
-#    Updated: 2022/11/27 18:54:55 by epeters-         ###   ########.fr        #
+#    Updated: 2022/12/15 19:50:55 by epeters-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ $(NAME): $(OBJS)
 	@echo Compiling $(NAME)...
 	@echo Compiling libft...
 	make -C $(DIR_LIBFT)
-	$(CC) $(CLFAGS) -o $(NAME) $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
 	@echo $(NAME) ready!
 
 clean:

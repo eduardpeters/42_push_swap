@@ -6,7 +6,7 @@
 /*   By: epeters- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 17:29:29 by epeters-          #+#    #+#             */
-/*   Updated: 2022/12/08 18:58:18 by epeters-         ###   ########.fr       */
+/*   Updated: 2022/12/09 10:50:35 by epeters-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ t_stack	*parse_arguments(char **args)
 
 	current_arg = 0;
 	arg_size = get_arg_size(args);
+	if (arg_size == 0)
+		return (NULL);
 	while (current_arg < arg_size)
 	{
 		if (!check_number(args[current_arg]))

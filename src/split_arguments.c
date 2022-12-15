@@ -6,7 +6,7 @@
 /*   By: epeters- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 18:28:59 by epeters-          #+#    #+#             */
-/*   Updated: 2022/11/27 20:30:14 by epeters-         ###   ########.fr       */
+/*   Updated: 2022/12/15 19:49:26 by epeters-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,15 @@ static int	check_args_numbers(int argc, char **argv)
 	return (1);
 }
 
+static char	**free_strings(char *temp_str, char *joined_str)
+{
+	if (temp_str)
+		free(temp_str);
+	if (joined_str)
+		free(joined_str);
+	return (NULL);
+}
+
 char	**split_arguments(int argc, char **argv)
 {
 	int		current_arg;
@@ -54,9 +63,9 @@ char	**split_arguments(int argc, char **argv)
 	char	*joined_str;
 	char	*temp_str;
 
-	if (!check_args_numbers(argc, argv))
-		return (NULL);
 	joined_str = ft_strdup(argv[0]);
+	if (!check_args_numbers(argc, argv) || !joined_str)
+		return (NULL);
 	current_arg = 1;
 	while (current_arg < argc)
 	{
@@ -65,6 +74,8 @@ char	**split_arguments(int argc, char **argv)
 		free(temp_str);
 		temp_str = joined_str;
 		joined_str = ft_strjoin(joined_str, argv[current_arg]);
+		if (!temp_str || !joined_str)
+			return (free_strings(temp_str, joined_str));
 		free(temp_str);
 		current_arg++;
 	}
