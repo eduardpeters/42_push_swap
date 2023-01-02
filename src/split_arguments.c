@@ -6,7 +6,7 @@
 /*   By: epeters- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 18:28:59 by epeters-          #+#    #+#             */
-/*   Updated: 2022/12/15 19:49:26 by epeters-         ###   ########.fr       */
+/*   Updated: 2023/01/02 16:16:36 by epeters-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	**split_arguments(int argc, char **argv)
 
 	joined_str = ft_strdup(argv[0]);
 	if (!check_args_numbers(argc, argv) || !joined_str)
-		return (NULL);
+		return (free_strings(NULL, joined_str));
 	current_arg = 1;
 	while (current_arg < argc)
 	{
