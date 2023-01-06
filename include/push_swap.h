@@ -6,7 +6,7 @@
 /*   By: epeters- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 16:40:09 by epeters-          #+#    #+#             */
-/*   Updated: 2022/12/08 16:28:08 by epeters-         ###   ########.fr       */
+/*   Updated: 2023/01/06 16:48:39 by epeters-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ typedef struct s_stack
 
 /* push_swap.c */
 int		main(int argc, char **argv);
-int		check_sort(t_stack *stack);
-int		check_sort_asc(t_stack *stack, int size);
-int		check_sort_desc(t_stack *stack, int size);
 
 /* split_arguments.c */
 char	**split_arguments(int argc, char **argv);
@@ -40,6 +37,11 @@ t_stack	*initialize_stack(char **args);
 int		stack_length(t_stack *stack);
 void	print_stack(t_stack *stack);
 void	free_stack(t_stack **stack);
+
+/* check_sort.c */
+int		check_sort(t_stack *stack);
+int		check_sort_asc(t_stack *stack, int size);
+int		check_sort_desc(t_stack *stack, int size);
 
 /* sorting_a.c */
 void	sort_stack_a(t_stack **stack_a, t_stack **stack_b);
